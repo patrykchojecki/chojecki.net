@@ -23,22 +23,26 @@ Reviewed 2026-10-25 (Asia/Taipei), starting at `dd3be91`.
   revalidation and deployment invalidation, hashed immutable assets, native
   deferred scripts, and stylesheet preload hints. Do not add Cache Everything.
 
-## Recommended change
+## Applied change
 
-Enable **Caching → Configuration → Crawler Hints**. It was off at inspection.
+Enabled **Caching → Configuration → Crawler Hints** on 2026-10-25 after the
+owner explicitly approved enabling it and accepting its terms. It was off at
+inspection; the dashboard confirmed **On**, including after a page reload.
 Cloudflare uses cache signals to notify participating search engines through
 IndexNow when content may have changed. This improves discovery signals; it
 does not guarantee indexing, rankings, AI citations, or lower request latency.
 
-Status: pending owner confirmation. The dashboard says enabling the service
-shares website information needed for the feature and accepts its Supplemental
-Terms. No production setting has been changed during this review.
+The service shares website information needed for its functionality under
+Cloudflare's Supplemental Terms. This was the only production setting changed.
 
-Rollback, if enabled: switch Crawler Hints off in the same panel. This change
+Rollback: switch Crawler Hints off in the same panel. This change
 requires no site deployment, DNS change, cache purge, or security exception.
 
 ## Verification
 
+- After enabling Crawler Hints, the live discovery check passed again for all
+  9 resources, and the same production hosting comparison passed again for
+  60 pages/assets and 22 redirect/404 cases. No delivery regression was detected.
 - `check-live-site.py` passed all 9 discovery resources: robots.txt, sitemap.xml,
   and its 7 canonical entries, including the PDF. Canonicals, structured data,
   indexing permissions, and revision-date consistency passed.
