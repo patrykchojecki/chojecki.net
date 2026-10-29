@@ -190,19 +190,21 @@
   "familyName": "Chojecki",
   "url": {{ seo_url | append: "/" | jsonify }},
   "image": {{ author_image_url | jsonify }},
-  "jobTitle": {{ site.author.job_title | default: "Startup Accelerator and Venture Capital Professional" | jsonify }},
+  "jobTitle": {{ site.author.job_title | default: "Early-stage startup investor" | jsonify }},
   "description": {{ site.description | jsonify }},
   "email": {{ site.author.email | prepend: "mailto:" | jsonify }},
   "sameAs": {{ site.social.links | jsonify }},
   "hasOccupation": {
     "@type": "Occupation",
-    "name": "Startup accelerator program manager",
+    "name": "Early-stage startup investor",
     "occupationLocation": {
       "@type": "City",
       "name": "Taipei"
     }
   },
   "knowsAbout": [
+    "early-stage startup investing",
+    "artificial intelligence (AI)",
     "startup accelerators",
     "accelerator program management",
     "founder support",

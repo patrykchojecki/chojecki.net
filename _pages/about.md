@@ -1,19 +1,21 @@
 ---
 permalink: /
 title: "Hi, I’m Patryk 👋"
-seo_title: "Patryk Chojecki - Program Manager at 886 Studios in Taipei"
-description: "Patryk Chojecki is a Taipei-based Program Manager at 886 Studios focused on startup accelerators, consumer tech, fundraising, and APAC market entry."
-excerpt: "Taipei-based startup accelerator and venture professional at 886 Studios focused on consumer tech startups, fundraising, investor relations, and APAC market entry."
+seo_title: "Patryk Chojecki | Early-Stage Investor & AI"
+description: "I’m Patryk Chojecki, an early-stage startup investor at 886 Studios. I’m interested in ambitious founders building with AI, wherever they’re from."
+excerpt: "I’m Patryk Chojecki, an early-stage startup investor at 886 Studios. I’m interested in ambitious founders building with AI, wherever they’re from."
 author_profile: true
-last_modified_at: 2026-07-02
+last_modified_at: 2026-10-29
 redirect_from: 
   - /about/
   - /about.html
 ---
 
-I’m based in Taipei, where I work with consumer tech startups on fundraising, product development, investor relations, market entry, and cross-border innovation across APAC. Originally from Poland, I’ve spent the past several years in Taiwan at the intersection of technology, entrepreneurship, and venture capital. I'm currently at  [886 Studios](https://www.886studios.com/), working with [Lifelike Capital](https://www.lifelikecap.com/) to scale our venture investments.
+I’m an early-stage startup investor at [886 Studios](https://www.886studios.com/). I’m interested in ambitious founders building with AI, wherever they’re from.
 
-At 886 Studios, we’re always looking for exceptional founders to back - so make sure to reach out 😄.
+Originally from Poland, I’m based in Taipei, where I work with founders on fundraising, product development, investor relations, and market entry. At 886 Studios, I’m working with [Lifelike Capital](https://www.lifelikecap.com/) to scale our venture investments.
+
+If you’re building something ambitious with AI, I’d love to [hear from you](mailto:hi@chojecki.net) 😄.
 
 ## My Journey
 

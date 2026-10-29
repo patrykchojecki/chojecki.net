@@ -1,25 +1,25 @@
 ---
 layout: archive
 title: "CV"
-seo_title: "Patryk Chojecki CV - Startup Accelerator & Venture Professional"
-description: "CV for Patryk Chojecki, Program Manager at 886 Studios, covering startup accelerators, venture, fundraising, investor relations, and APAC market entry."
-excerpt: "CV for Patryk Chojecki, focused on startup accelerators, venture, fundraising, investor relations, market entry, and APAC founder support."
+seo_title: "Patryk Chojecki CV | Early-Stage Startup Investor"
+description: "My experience in early-stage investing, startup accelerators, and founder support, including my current work at 886 Studios."
+excerpt: "My experience in early-stage investing, startup accelerators, and founder support, including my current work at 886 Studios."
 permalink: /cv/
 author_profile: true
-last_modified_at: 2026-08-10
+last_modified_at: 2026-10-29
 redirect_from:
   - /resume
 ---
 
 {% include base_path %}
-<p class="cv-meta">Last updated <time datetime="2026-08-10">10 August 2026</time> · Taipei, Taiwan <span role="img" aria-label="Taiwan">🇹🇼</span></p>
+<p class="cv-meta">Last updated <time datetime="2026-10-29">29 October 2026</time> · Taipei, Taiwan <span role="img" aria-label="Taiwan">🇹🇼</span></p>
 
 <hr class="cv-divider">
 
 ## Professional Profile
 {: .cv-section-title}
 
-Experienced in supporting early-stage founders on fundraising, product strategy, market entry, and investor relations across APAC. Strong background in startup accelerators, venture capital, deal sourcing, due diligence, and portfolio support. Passionate about working with ambitious founders and helping them build and scale high-growth technology companies.
+I’m an early-stage startup investor at 886 Studios, interested in ambitious founders building with AI, wherever they’re from. My experience spans startup accelerators, investment sourcing, due diligence, and portfolio support. I work with founders on fundraising, product strategy, market entry, and investor relations.
 {: .cv-profile}
 
 <hr class="cv-divider">

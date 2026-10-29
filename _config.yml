@@ -8,10 +8,10 @@
 # Site Settings
 locale                   : "en-US"
 title                    : "Patryk Chojecki"
-tagline                  : "Program Manager at 886 Studios | Startup Accelerators & Venture Capital"
+tagline                  : "Early-Stage Investor & AI"
 title_separator          : "-"
 name                     : &name "Patryk Chojecki"
-description              : &description "Patryk Chojecki is a Program Manager at 886 Studios focused on startup accelerator programs, early-stage investment, founder support, fundraising readiness, investor relations, market entry, and cross-border growth across Taiwan and APAC."
+description              : &description "I’m Patryk Chojecki, an early-stage startup investor at 886 Studios. I’m interested in ambitious founders building with AI, wherever they’re from."
 url                      : https://chojecki.net # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of the site, e.g. "/blog"
 repository               : "patrykchojecki/chojecki.net"
@@ -65,11 +65,11 @@ facebook:
   username               :
   app_id                 :
   publisher              :
-og_image                 : "profile.png" # Open Graph/Twitter default site image
-og_image_alt             : "Portrait of Patryk Chojecki"
-og_image_width           : 720
-og_image_height          : 720
-twitter_card             : "summary"
+og_image                 : "social-preview-signature-stroke.png" # Open Graph/Twitter default site image
+og_image_alt             : "Patryk Chojecki in bold type with an orange signature stroke on white."
+og_image_width           : 1200
+og_image_height          : 630
+twitter_card             : "summary_large_image"
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
@@ -93,7 +93,7 @@ analytics:
 author:
   name             : "Patryk Chojecki"
   avatar           : "bio-photo-600.jpg"
-  bio              : "Program Manager at 886 Studios"
+  bio              : "Early-stage startup investor at 886 Studios"
   job_title        : "Program Manager"
   location         : "Taipei, Taiwan"
   employer         : "886 Studios"

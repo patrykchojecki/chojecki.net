@@ -2,8 +2,8 @@
 layout: archive
 title: "The Now Page"
 seo_title: "Now - Patryk Chojecki"
-description: "A time-stamped now page from Patryk Chojecki with notes about work, travel, startups, technology, personal interests, and life in Taiwan."
-excerpt: "A time-stamped now page from Patryk Chojecki with notes about work, travel, startups, technology, personal interests, and life in Taiwan."
+description: "What I’m up to, what I’m focused on, and life in Taipei. Personal updates from Patryk Chojecki."
+excerpt: "What I’m up to, what I’m focused on, and life in Taipei. Personal updates from Patryk Chojecki."
 permalink: /now/
 author_profile: true
 last_modified_at: 2026-07-28
