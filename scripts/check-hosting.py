@@ -7,6 +7,7 @@ import json
 import sys
 import time
 from concurrent.futures import ThreadPoolExecutor
+from fnmatch import fnmatchcase
 from pathlib import Path
 from urllib.parse import quote, urljoin, urlsplit
 
@@ -41,7 +42,12 @@ def check(root, base, check_hosts=False):
         if status != 200:
             return f"{route}: expected HTTP 200, got {status}"
         actual_headers = {key.lower(): value for key, value in headers.items()}
-        for key, expected_value in response_rules.get(route, {}).items():
+        expected_headers = {}
+        for pattern, rule_headers in response_rules.items():
+            if fnmatchcase(route, pattern):
+                for key, value in rule_headers.items():
+                    expected_headers[key] = f"{expected_headers[key]}, {value}" if key in expected_headers else value
+        for key, expected_value in expected_headers.items():
             if actual_headers.get(key) != expected_value:
                 return f"{route}: unexpected {key} header"
         if FINGERPRINT.search(path.name):

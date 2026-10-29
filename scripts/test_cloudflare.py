@@ -86,6 +86,7 @@ class CloudflareTests(unittest.TestCase):
         self.assertNotIn("/assets/css/main.css", rules)
         self.assertNotIn("/robots.txt", rules)
         self.assertNotIn("/sitemap.xml", rules)
+        self.assertEqual(rules["/assets/Patryk*CV.pdf"], {"x-robots-tag": "noindex"})
 
     def test_preparation_is_repeatable_and_preserves_external_urls(self):
         external = '<script src="https://example.com/assets/js/main.min.js?v=9"></script>'

@@ -55,7 +55,7 @@ The site is maintained as a Jekyll project, built with GitHub Actions and deploy
 ## Evidence on Hand
 
 - Biography and personal journey: `_pages/about.md`.
-- Professional experience, education, languages, and quantified career claims: `_pages/cv.md` and `assets/Patryk Chojecki - CV.pdf`.
+- Current professional experience, education, languages, and quantified career claims: `_pages/cv.md`. The PDF in `assets/` is a June 2025 snapshot and should not be used for the current role.
 - Hobby-project archive and supporting images: `_pages/portfolio.html`, `_portfolio/`, and `images/projects/`.
 - Current-activity format and Xbox activity integration: `_pages/now.md`, `_includes/xbox-activity.html`, and `_data/xbox_preview.yml`.
 - Identity, contact information, professional links, and site metadata: `_config.yml`, `_data/navigation.yml`, `_data/author_profile_links.yml`, and `images/`.

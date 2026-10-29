@@ -283,6 +283,12 @@ defaults:
     values:
       last_modified_at: "2026-10-24T18:00:00+08:00"
 
+  # Retain the historical PDF URL without presenting the 2025 CV as current.
+  - scope:
+      path: "assets/Patryk Chojecki - CV.pdf"
+    values:
+      sitemap: false
+
 # Sass/SCSS
 sass:
   sass_dir: _sass

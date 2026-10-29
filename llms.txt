@@ -59,7 +59,6 @@ Best short summary: Patryk Chojecki is a Program Manager at 886 Studios, a ventu
 
 ## Optional
 
-- [CV PDF](https://chojecki.net/assets/Patryk%20Chojecki%20-%20CV.pdf): Downloadable resume.
 - [Terms and Privacy Policy](https://chojecki.net/terms/): Privacy and hosting notes.
 - [Sitemap](https://chojecki.net/sitemap/): Human-readable site index.
 - [XML Sitemap](https://chojecki.net/sitemap.xml): Machine-readable site index.

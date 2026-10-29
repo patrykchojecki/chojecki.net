@@ -82,7 +82,9 @@ def optimize(root):
         headers.extend([target, f"  Cache-Control: {IMMUTABLE}", ""])
     for route in hints:
         headers.extend([route, f"  Link: <{stylesheet}>; rel=preload; as=style", ""])
-    if len(mapping) + len(hints) > 100:
+    # The linked 2025 CV remains available at its old URL, but is no longer current.
+    headers.extend(["/assets/Patryk*CV.pdf", "  X-Robots-Tag: noindex", ""])
+    if len(mapping) + len(hints) + 1 > 100:
         raise ValueError("The site exceeds the Pages header-rule limit")
     if any(len(line) > 2000 for line in headers):
         raise ValueError("The site exceeds the Pages header-line limit")

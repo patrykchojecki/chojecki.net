@@ -60,6 +60,32 @@ class HostingTests(unittest.TestCase):
         self.assertEqual(self.requests, 1)
         sleep.assert_not_called()
 
+    def test_wildcard_pdf_noindex_header_is_verified(self):
+        pdf = self.root / 'assets/Patryk Chojecki - CV.pdf'
+        pdf.parent.mkdir()
+        pdf.write_bytes(b'%PDF-1.7 old CV')
+        (self.root / '_headers').write_text(
+            '/\n  Link: ' + self.link + '\n\n/assets/Patryk*CV.pdf\n  X-Robots-Tag: noindex\n'
+        )
+
+        def responses(with_noindex):
+            def fetch(url):
+                if url.endswith('/__hosting-check-missing-7d9c2a__'):
+                    return 404, {}, b''
+                if url.endswith('/redirects.json'):
+                    return 200, {}, b'{}'
+                if url.endswith('/Patryk%20Chojecki%20-%20CV.pdf'):
+                    headers = {'X-Robots-Tag': 'noindex'} if with_noindex else {}
+                    return 200, headers, pdf.read_bytes()
+                return 200, {'Link': self.link, 'Cache-Control': 'public, max-age=0'}, (self.root / 'index.html').read_bytes()
+            return fetch
+
+        with patch.object(hosting.live, 'fetch', responses(False)):
+            with self.assertRaisesRegex(hosting.HostingCheckError, 'unexpected x-robots-tag header'):
+                hosting.check(self.root, 'https://preview.example')
+        with patch.object(hosting.live, 'fetch', responses(True)):
+            hosting.check(self.root, 'https://preview.example')
+
 
 if __name__ == '__main__':
     unittest.main()
