@@ -2,8 +2,8 @@
 layout: archive
 title: "CV"
 seo_title: "Patryk Chojecki CV | Program Manager at 886 Studios"
-description: "My experience working on investments and with founders on validation, growth, product development, and fundraising, including my current role at 886 Studios."
-excerpt: "My experience working on investments and with founders on validation, growth, product development, and fundraising, including my current role at 886 Studios."
+description: "I focus on investments and work with founders on validation, growth, product development, and fundraising. Explore my experience at 886 Studios."
+excerpt: "I focus on investments and work with founders on validation, growth, product development, and fundraising. Explore my experience at 886 Studios."
 permalink: /cv/
 author_profile: true
 last_modified_at: 2026-10-29
@@ -19,7 +19,7 @@ redirect_from:
 ## Professional Profile
 {: .cv-section-title}
 
-I’m a Program Manager at 886 Studios, where I work on investments and with founders on validation, traction, growth, product development, and fundraising. My experience spans startup accelerators, investment sourcing, due diligence, and portfolio support.
+I’m a Program Manager at 886 Studios, where I focus on investments and work with founders on validation, traction, growth, product development, and fundraising. My experience spans startup accelerators, investment sourcing, due diligence, and portfolio support.
 {: .cv-profile}
 
 <hr class="cv-divider">

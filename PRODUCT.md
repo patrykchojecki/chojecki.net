@@ -18,7 +18,7 @@ Success means a visitor leaves with a rounded and recognizably personal understa
 
 ## Positioning
 
-Lead previews and professional summaries with Patryk as a Program Manager at 886 Studios, where he works on investments and with founders on validation, traction, growth, product development, and fundraising. Use a personal, first-person voice. Taipei is his base; 886 Studios invests in founders building global businesses from around the world.
+Lead previews and professional summaries with Patryk as a Program Manager at 886 Studios, where he focuses on investments and works with founders on validation, traction, growth, product development, and fundraising. Use a personal, first-person voice. Taipei is his base; 886 Studios invests in founders building global businesses from around the world.
 
 This is a first-person personal site rather than a generic professional profile. Its value comes from combining Patryk’s work in startup accelerators and venture capital with his founder-support experience, personal investing interests, projects, tastes, observations, and life in Taiwan. The site should reveal more of Patryk’s perspective and personality than LinkedIn or a résumé can.
 

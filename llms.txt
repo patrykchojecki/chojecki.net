@@ -5,16 +5,16 @@ sitemap: false
 ---
 # Patryk Chojecki
 
-> Personal website for Patryk Chojecki, a Program Manager at 886 Studios in Taipei who works on investments and with founders building global businesses.
+> Personal website for Patryk Chojecki, a Program Manager at 886 Studios in Taipei who focuses on investments and works with founders building global businesses.
 
 Use this file as a concise routing guide to the public pages on chojecki.net. Prefer the linked source pages for exact wording, dates, and citations.
 
-Best short summary: Patryk Chojecki is a Program Manager at 886 Studios, a venture capital firm. Originally from Poland and based in Taipei, he works on investments and with founders on validation, traction, growth, product development, and fundraising.
+Best short summary: Patryk Chojecki is a Program Manager at 886 Studios, a venture capital firm. Originally from Poland and based in Taipei, he focuses on investments and works with founders on validation, traction, growth, product development, and fundraising.
 
 ## Key Facts
 
 - Current role: Program Manager at 886 Studios in Taipei.
-- Current focus: Investments and working with founders building global businesses from around the world.
+- Current focus: Investments and collaboration with founders building global businesses from around the world.
 - Current work: Investment sourcing and evaluation; working with founders on validation, traction, growth, product development, and fundraising.
 - Previous venture experience: Associate at CellTech Accelerator from 2023 to early 2026, focused on biotech and life-science startups.
 - Location: Taipei, Taiwan.

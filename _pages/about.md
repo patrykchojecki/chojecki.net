@@ -2,8 +2,8 @@
 permalink: /
 title: "Hi, I’m Patryk 👋"
 seo_title: "Patryk Chojecki | Program Manager at 886 Studios"
-description: "I’m Patryk Chojecki, a Program Manager at 886 Studios in Taipei. I work on investments and with founders on validation, traction, growth, product development, and fundraising."
-excerpt: "I’m Patryk Chojecki, a Program Manager at 886 Studios in Taipei. I work on investments and with founders on validation, traction, growth, product development, and fundraising."
+description: "I’m Patryk Chojecki, a Program Manager at 886 Studios in Taipei. I focus on investments and work with founders on validation, traction, growth, product development, and fundraising."
+excerpt: "I’m Patryk Chojecki, a Program Manager at 886 Studios in Taipei. I focus on investments and work with founders on validation, traction, growth, product development, and fundraising."
 author_profile: true
 last_modified_at: 2026-10-29
 redirect_from: 
@@ -13,7 +13,7 @@ redirect_from:
 
 I’m a Program Manager at [886 Studios](https://www.886studios.com/) - a venture capital firm started by the founders of [Guitar Hero](https://en.wikipedia.org/wiki/Guitar_Hero), [Twitch](https://www.twitch.tv), [Kabam](https://kabam.com), and many other wonderful companies. We invest in ambitious founders building global businesses from all around the world.
 
-Originally from Poland, I’m based in Taipei, where I work on investments and with founders on validation, traction, growth, product development, and fundraising.
+Originally from Poland, I’m based in Taipei, where I focus on investments and work with founders on validation, traction, growth, product development, and fundraising.
 
 If you’re building a global business, I’d love to [hear from you](mailto:hi@chojecki.net) 😄.
 
