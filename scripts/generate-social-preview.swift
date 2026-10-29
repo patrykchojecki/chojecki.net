@@ -7,9 +7,9 @@ import Foundation
 import ImageIO
 import UniformTypeIdentifiers
 
-let width = 1200
-let height = 630
-let output = URL(fileURLWithPath: "images/social-preview-signature-stroke")
+let width = 2400
+let height = 1260
+let output = URL(fileURLWithPath: "images/social-preview-signature-stroke-v2")
 
 func font(_ filename: String, size: CGFloat) -> CTFont {
     let url = URL(fileURLWithPath: "/Library/Fonts/\(filename)")
@@ -64,11 +64,11 @@ func svgPath(_ path: CGPath) -> String {
     return commands.joined(separator: " ")
 }
 
-let displayFont = font("SF-Pro-Display-Bold.otf", size: 148)
+let displayFont = font("SF-Pro-Display-Bold.otf", size: 132)
 let domainFont = font("SF-Pro-Text-Regular.otf", size: 24)
 let lettering = [
-    outline("Patryk", font: displayFont, x: 68, baseline: 262, tracking: -4),
-    outline("Chojecki", font: displayFont, x: 68, baseline: 385, tracking: -4),
+    outline("Patryk", font: displayFont, x: 72, baseline: 244, tracking: 1.5),
+    outline("Chojecki", font: displayFont, x: 72, baseline: 382, tracking: 1.5),
     outline("chojecki.net", font: domainFont, x: 76, baseline: 564)
 ]
 
@@ -83,7 +83,7 @@ stroke.addCurve(to: CGPoint(x: 1138, y: 423), control1: CGPoint(x: 788, y: 478),
 stroke.addCurve(to: CGPoint(x: 1240, y: 392), control1: CGPoint(x: 1175, y: 411), control2: CGPoint(x: 1215, y: 398))
 
 let svg = """
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1260" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
 <title id="title">Patryk Chojecki</title>
 <desc id="desc">Patryk Chojecki in SF Pro Display Bold above an orange signature stroke, with chojecki.net in SF Pro Text Regular on white.</desc>
 <rect width="1200" height="630" fill="#ffffff"/>
@@ -102,7 +102,7 @@ let context = CGContext(data: nil, width: width, height: height, bitsPerComponen
 context.setFillColor(CGColor(srgbRed: 1, green: 1, blue: 1, alpha: 1))
 context.fill(CGRect(x: 0, y: 0, width: width, height: height))
 context.translateBy(x: 0, y: CGFloat(height))
-context.scaleBy(x: 1, y: -1)
+context.scaleBy(x: 2, y: -2)
 context.setFillColor(CGColor(srgbRed: 34 / 255, green: 34 / 255, blue: 34 / 255, alpha: 1))
 for path in lettering {
     context.addPath(path)

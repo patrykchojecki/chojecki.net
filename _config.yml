@@ -65,10 +65,10 @@ facebook:
   username               :
   app_id                 :
   publisher              :
-og_image                 : "social-preview-signature-stroke.png" # Open Graph/Twitter default site image
+og_image                 : "social-preview-signature-stroke-v2.png" # Open Graph/Twitter default site image
 og_image_alt             : "Patryk Chojecki in bold type with an orange signature stroke on white."
-og_image_width           : 1200
-og_image_height          : 630
+og_image_width           : 2400
+og_image_height          : 1260
 twitter_card             : "summary_large_image"
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
