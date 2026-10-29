@@ -1,9 +1,9 @@
 ---
 permalink: /
 title: "Hi, I’m Patryk 👋"
-seo_title: "Patryk Chojecki | Early-Stage Investor & AI"
-description: "I’m Patryk Chojecki, an early-stage startup investor at 886 Studios. I’m interested in ambitious founders building with AI, wherever they’re from."
-excerpt: "I’m Patryk Chojecki, an early-stage startup investor at 886 Studios. I’m interested in ambitious founders building with AI, wherever they’re from."
+seo_title: "Patryk Chojecki | Early-Stage Investor"
+description: "I’m Patryk Chojecki, an early-stage investor at 886 Studios. I’m interested in ambitious founders building with AI, wherever they’re from."
+excerpt: "I’m Patryk Chojecki, an early-stage investor at 886 Studios. I’m interested in ambitious founders building with AI, wherever they’re from."
 author_profile: true
 last_modified_at: 2026-10-29
 redirect_from: 
@@ -11,11 +11,11 @@ redirect_from:
   - /about.html
 ---
 
-I’m an early-stage startup investor at [886 Studios](https://www.886studios.com/). I’m interested in ambitious founders building with AI, wherever they’re from.
+I’m a Program Manager at [886 Studios](https://www.886studios.com/) - a venture capital firm started by the founders of [Guitar Hero](https://en.wikipedia.org/wiki/Guitar_Hero), [Twitch](https://www.twitch.tv), [Kabam](https://kabam.com), and many other wonderful companies. We invest in ambitious founders building global businesses from all around the world.
 
-Originally from Poland, I’m based in Taipei, where I work with founders on fundraising, product development, investor relations, and market entry. At 886 Studios, I’m working with [Lifelike Capital](https://www.lifelikecap.com/) to scale our venture investments.
+Originally from Poland, I’m based in Taipei, where I work with our portfolio teams on validation, traction, growth, product development, and fundraising.
 
-If you’re building something ambitious with AI, I’d love to [hear from you](mailto:hi@chojecki.net) 😄.
+If you’re building a global business, I’d love to [hear from you](mailto:hi@chojecki.net) 😄.
 
 ## My Journey
 
@@ -31,4 +31,4 @@ In my free time, I enjoy playing football and squash. I also love reading about 
 
 If you’d like to know what I’m currently up to, visit my [/now page]({{ '/now/' | relative_url }}).
 
-I’d love to chat or connect on [LinkedIn](https://www.linkedin.com/in/patryk-chojecki/)!
+Feel free to [reach out](mailto:hi@chojecki.net) or connect on [LinkedIn](https://www.linkedin.com/in/patryk-chojecki/)!
