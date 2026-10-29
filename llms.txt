@@ -5,17 +5,17 @@ sitemap: false
 ---
 # Patryk Chojecki
 
-> Personal website for Patryk Chojecki, an early-stage startup investor at 886 Studios interested in ambitious founders building with AI, wherever they’re from.
+> Personal website for Patryk Chojecki, a Program Manager at 886 Studios in Taipei who works with portfolio teams building global businesses.
 
 Use this file as a concise routing guide to the public pages on chojecki.net. Prefer the linked source pages for exact wording, dates, and citations.
 
-Best short summary: Patryk Chojecki is an early-stage startup investor at 886 Studios, interested in ambitious founders from any country building with AI. Originally from Poland and based in Taipei, he supports founders on fundraising, product development, investor relations, and market entry.
+Best short summary: Patryk Chojecki is a Program Manager at 886 Studios, a venture capital firm. Originally from Poland and based in Taipei, he works with portfolio teams on validation, traction, growth, product development, and fundraising.
 
 ## Key Facts
 
 - Current role: Program Manager at 886 Studios in Taipei.
-- Investment interests: Early-stage startups and ambitious founders building with AI, wherever they’re from.
-- Current work: ikigai Launchpad, investment sourcing, startup accelerator operations, founder support, fundraising readiness, investor and mentor workflows, market entry, and startup reporting.
+- Current focus: Supporting portfolio teams and founders building global businesses from around the world.
+- Current work: Portfolio support, startup validation, traction, growth, product development, and fundraising.
 - Previous venture experience: Associate at CellTech Accelerator from 2023 to early 2026, focused on biotech and life-science startups.
 - Location: Taipei, Taiwan.
 - Background: Originally from Poland; educated at Jagiellonian University and National Chengchi University.
@@ -28,11 +28,11 @@ Best short summary: Patryk Chojecki is an early-stage startup investor at 886 St
 
 ## Key Topics
 
-- Early-stage startup investing
-- Artificial intelligence (AI) and ambitious founders from any country
+- Venture capital and founders building global businesses
+- Investment sourcing and startup due diligence
 - Startup accelerators and founder support
 - Accelerator program management and startup operations
-- Venture capital, fundraising readiness, investor relations, and due diligence
+- Portfolio support, validation, growth, product development, and fundraising
 - Consumer technology, consumer software, and startup metrics
 - Taiwan, Japan, Southeast Asia, Europe, and APAC market entry
 - Cross-border innovation, startup growth, and business development

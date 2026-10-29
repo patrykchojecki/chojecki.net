@@ -171,7 +171,7 @@
   "@id": {{ employer_id | jsonify }},
   "name": {{ site.author.employer | jsonify }},
   "url": {{ site.author.employer_url | jsonify }},
-  "description": "886 Studios is a Taipei-based startup accelerator and venture platform supporting early-stage technology founders through programs including ikigai Launchpad.",
+  "description": "886 Studios is a venture capital firm supporting founders building global businesses.",
   "location": {
     "@type": "Place",
     "name": "Taipei, Taiwan"
@@ -190,41 +190,32 @@
   "familyName": "Chojecki",
   "url": {{ seo_url | append: "/" | jsonify }},
   "image": {{ author_image_url | jsonify }},
-  "jobTitle": {{ site.author.job_title | default: "Early-stage startup investor" | jsonify }},
+  "jobTitle": {{ site.author.job_title | jsonify }},
   "description": {{ site.description | jsonify }},
   "email": {{ site.author.email | prepend: "mailto:" | jsonify }},
   "sameAs": {{ site.social.links | jsonify }},
   "hasOccupation": {
     "@type": "Occupation",
-    "name": "Early-stage startup investor",
+    "name": {{ site.author.job_title | jsonify }},
     "occupationLocation": {
       "@type": "City",
       "name": "Taipei"
     }
   },
   "knowsAbout": [
-    "early-stage startup investing",
-    "artificial intelligence (AI)",
     "startup accelerators",
     "accelerator program management",
-    "founder support",
     "venture capital",
+    "portfolio support",
+    "startup validation",
+    "startup growth",
+    "product development",
     "fundraising",
-    "fundraising readiness",
-    "investor relations",
-    "pitch decks",
+    "investment sourcing",
     "startup due diligence",
-    "market entry",
-    "cross-border innovation",
-    "consumer technology startups",
-    "consumer software",
-    "startup metrics",
     "Taiwan startup ecosystem",
     "biotech startups",
-    "life-science startups",
-    "Japan",
-    "Southeast Asia",
-    "APAC"
+    "life-science startups"
   ],
   "worksFor": {
     "@id": {{ employer_id | jsonify }}
