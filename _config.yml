@@ -8,10 +8,10 @@
 # Site Settings
 locale                   : "en-US"
 title                    : "Patryk Chojecki"
-tagline                  : "Early-Stage Investor & AI"
+tagline                  : "Program Manager at 886 Studios"
 title_separator          : "-"
 name                     : &name "Patryk Chojecki"
-description              : &description "I’m Patryk Chojecki, an early-stage startup investor at 886 Studios. I’m interested in ambitious founders building with AI, wherever they’re from."
+description              : &description "I’m Patryk Chojecki, a Program Manager at 886 Studios in Taipei. I work with portfolio teams on validation, traction, growth, product development, and fundraising."
 url                      : https://chojecki.net # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of the site, e.g. "/blog"
 repository               : "patrykchojecki/chojecki.net"
@@ -93,7 +93,7 @@ analytics:
 author:
   name             : "Patryk Chojecki"
   avatar           : "bio-photo-600.jpg"
-  bio              : "Early-stage startup investor at 886 Studios"
+  bio              : "Program Manager at 886 Studios"
   job_title        : "Program Manager"
   location         : "Taipei, Taiwan"
   employer         : "886 Studios"

@@ -1,9 +1,9 @@
 ---
 permalink: /
 title: "Hi, I’m Patryk 👋"
-seo_title: "Patryk Chojecki | Early-Stage Investor"
-description: "I’m Patryk Chojecki, an early-stage investor at 886 Studios. I’m interested in ambitious founders building with AI, wherever they’re from."
-excerpt: "I’m Patryk Chojecki, an early-stage investor at 886 Studios. I’m interested in ambitious founders building with AI, wherever they’re from."
+seo_title: "Patryk Chojecki | Program Manager at 886 Studios"
+description: "I’m Patryk Chojecki, a Program Manager at 886 Studios in Taipei. I work with portfolio teams on validation, traction, growth, product development, and fundraising."
+excerpt: "I’m Patryk Chojecki, a Program Manager at 886 Studios in Taipei. I work with portfolio teams on validation, traction, growth, product development, and fundraising."
 author_profile: true
 last_modified_at: 2026-10-29
 redirect_from: 

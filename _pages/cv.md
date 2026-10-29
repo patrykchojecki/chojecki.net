@@ -1,9 +1,9 @@
 ---
 layout: archive
 title: "CV"
-seo_title: "Patryk Chojecki CV | Early-Stage Startup Investor"
-description: "My experience in early-stage investing, startup accelerators, and founder support, including my current work at 886 Studios."
-excerpt: "My experience in early-stage investing, startup accelerators, and founder support, including my current work at 886 Studios."
+seo_title: "Patryk Chojecki CV | Program Manager at 886 Studios"
+description: "My experience in startup programs, investment sourcing, and portfolio support, including my current role as Program Manager at 886 Studios."
+excerpt: "My experience in startup programs, investment sourcing, and portfolio support, including my current role as Program Manager at 886 Studios."
 permalink: /cv/
 author_profile: true
 last_modified_at: 2026-10-29
@@ -19,7 +19,7 @@ redirect_from:
 ## Professional Profile
 {: .cv-section-title}
 
-I’m an early-stage startup investor at 886 Studios, interested in ambitious founders building with AI, wherever they’re from. My experience spans startup accelerators, investment sourcing, due diligence, and portfolio support. I work with founders on fundraising, product strategy, market entry, and investor relations.
+I’m a Program Manager at 886 Studios, working with portfolio teams on validation, traction, growth, product development, and fundraising. My experience spans startup accelerators, investment sourcing, due diligence, and portfolio support.
 {: .cv-profile}
 
 <hr class="cv-divider">
