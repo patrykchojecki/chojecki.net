@@ -53,8 +53,10 @@ Best short summary: Patryk Chojecki is a Program Manager at 886 Studios, a ventu
 
 - [LinkedIn](https://www.linkedin.com/in/patryk-chojecki/): Preferred professional profile.
 - [GitHub](https://github.com/patrykchojecki): Code and public projects.
+{% comment %}Temporarily hidden social profiles; remove this comment block to restore.
 - [Bluesky](https://bsky.app/profile/chojecki.net): Social profile.
 - [Mastodon](https://mastodon.world/@cherrysandwich): Social profile.
+{% endcomment %}
 - [Email](mailto:hi@chojecki.net): Direct contact.
 
 ## Optional
