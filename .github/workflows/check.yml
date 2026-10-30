@@ -1,0 +1,52 @@
+name: Check site
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: check-site-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      BUNDLE_WITHOUT: development
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+
+      - name: Setup Node
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version-file: .node-version
+          cache: npm
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@651ff0d62c5c79bed6d53ec518387aae20e72c1a # v1
+        with:
+          bundler-cache: true
+
+      - name: Install JavaScript dependencies
+        run: npm ci
+
+      - name: Run regression tests and build the production site
+        run: npm run check
+
+      - name: Validate the Cloudflare upload
+        run: |
+          python3 scripts/prepare-cloudflare.py
+          npm run check:site
+
+      - name: Check that generated JavaScript is committed
+        run: git diff --exit-code -- assets/js/main.min.js
