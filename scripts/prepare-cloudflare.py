@@ -29,7 +29,7 @@ def prepare(root):
     # Jekyll's HTML redirect pages remain in the build for GitHub rollback.
     # Use HTTP redirects on Pages, including its extensionless HTML aliases.
     redirects = json.loads((root / "redirects.json").read_text())
-    rules = {}
+    rules = {"/security.txt": "/.well-known/security.txt"}
     for source, destination in redirects.items():
         target = urlsplit(destination)
         if target.scheme != "https" or target.netloc != "chojecki.net" or target.query or target.fragment:

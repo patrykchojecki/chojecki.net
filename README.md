@@ -60,6 +60,19 @@ Read [PRODUCT.md](PRODUCT.md) for content constraints and [DESIGN.md](DESIGN.md)
 
 ## Deployment and maintenance
 
+Security reporting is configured in [`.well-known/security.txt`](.well-known/security.txt),
+following [RFC 9116](https://www.rfc-editor.org/rfc/rfc9116.html) and
+[Cloudflare's security.txt guidance](https://developers.cloudflare.com/security-center/infrastructure/security-file/).
+It uses the site's existing `hi@chojecki.net` contact and expires on **1 October 2027 (UTC)**.
+Review the contact and renew the expiry before that date, keeping it less than a
+year ahead; do not automatically extend it without reviewing the information.
+Jekyll explicitly includes the file, and Cloudflare preparation sets its UTF-8
+plain-text content type and redirects `/security.txt` to `/.well-known/security.txt`.
+The deployment's existing hosting checks verify the file bytes, response header,
+and legacy redirect. Keep this repository as the source of truth rather than
+enabling a separate Cloudflare-managed copy. Encryption, signing, and a policy
+link can be added once a maintained public key and disclosure policy are available.
+
 Pushing to `master` runs the [Cloudflare deployment workflow](.github/workflows/cloudflare.yml). It also runs every six hours (`17 */6 * * *`, UTC) and on manual dispatch. It tests and builds the site, optionally fetches Xbox activity, prepares redirects and cached assets, verifies a preview, and publishes the same build to production. It then verifies the Pages origin and, when enabled, the custom domain.
 
 See [scripts/README.md](scripts/README.md) for required deployment settings, Xbox data, and validation commands. The [Cloudflare runbook](scripts/cloudflare/README.md) records hosting configuration, migration history, and rollback instructions. [Search visibility operations](scripts/geo/README.md) covers indexing and private measurement reports.
