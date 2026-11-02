@@ -39,7 +39,7 @@ Do not switch DNS until the Cloudflare deployment passes the preview gate.
 - Repository variable `CLOUDFLARE_CUSTOM_DOMAIN_ACTIVE`: `true`, enabling
   additional production-domain checks after every deployment.
 - `OPENXBL_API_KEY` remains in GitHub; the build fetches activity before upload.
-- Wrangler is pinned to `4.152.0`; no Pages Functions or Workers are deployed.
+- Wrangler is pinned to `4.156.1`; no Pages Functions or Workers are deployed.
 
 For a manual local upload, first build and validate the site, then run:
 
@@ -47,10 +47,10 @@ For a manual local upload, first build and validate the site, then run:
 npm run check
 python3 scripts/prepare-cloudflare.py
 npm run check:site
-npx --yes wrangler@4.152.0 pages deploy _site --project-name chojecki-net --branch verification
+npx --yes wrangler@4.156.1 pages deploy _site --project-name chojecki-net --branch verification
 python3 scripts/check-live-site.py --base-url https://verification.chojecki-net.pages.dev --allow-preview-noindex --expected-dir _site
 python3 scripts/check-hosting.py --base-url https://verification.chojecki-net.pages.dev --site-dir _site
-npx --yes wrangler@4.152.0 pages deploy _site --project-name chojecki-net --branch master
+npx --yes wrangler@4.156.1 pages deploy _site --project-name chojecki-net --branch master
 python3 scripts/check-live-site.py --base-url https://chojecki-net.pages.dev --expected-dir _site
 python3 scripts/check-hosting.py --base-url https://chojecki-net.pages.dev --site-dir _site
 ```
@@ -65,6 +65,17 @@ one-year immutable browser cache, while retaining their original URLs. It
 generates an exact stylesheet preload Link header for each styled page; HTML
 keeps Pages' revalidation policy. No source asset or Jekyll template is rewritten.
 See the [delivery review](PERFORMANCE.md) for the rationale and validation.
+
+The historical CV PDF keeps `X-Robots-Tag: noindex` and uses
+`Cache-Control: no-store` so caches do not retain outdated indexing headers.
+Hosting verification checks both headers on the original URL; it does not use
+a cache-busting query or accept a missing `noindex`. Header failures include
+the expected and actual values, cache status, age, cache policy, and Cloudflare
+Ray ID to help distinguish propagation from a persistent configuration problem.
+If an older cached response survives the first deployment of this policy,
+purge only that PDF URL in Cloudflare and rerun verification. Do not relax the
+header check. An explicit zone cache rule can override origin cache policy;
+inspect such rules if the response remains cacheable.
 
 CI uploads and checks the same build on the verification preview before changing
 production. Preview checks allow only Cloudflare's expected `noindex` response

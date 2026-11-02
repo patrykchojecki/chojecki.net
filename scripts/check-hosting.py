@@ -49,7 +49,10 @@ def check(root, base, check_hosts=False):
                     expected_headers[key] = f"{expected_headers[key]}, {value}" if key in expected_headers else value
         for key, expected_value in expected_headers.items():
             if actual_headers.get(key) != expected_value:
-                return f"{route}: unexpected {key} header"
+                cache = ", ".join(f"{name}={actual_headers.get(name)!r}" for name in
+                                  ("cf-cache-status", "age", "cache-control", "cf-ray"))
+                return (f"{route}: unexpected {key} header: expected {expected_value!r}, "
+                        f"got {actual_headers.get(key)!r} ({cache})")
         if FINGERPRINT.search(path.name):
             digest = hashlib.sha256(path.read_bytes()).hexdigest()[:16]
             if f".{digest}." not in path.name:

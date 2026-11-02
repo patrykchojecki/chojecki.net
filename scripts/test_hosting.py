@@ -65,10 +65,11 @@ class HostingTests(unittest.TestCase):
         pdf.parent.mkdir()
         pdf.write_bytes(b'%PDF-1.7 old CV')
         (self.root / '_headers').write_text(
-            '/\n  Link: ' + self.link + '\n\n/assets/Patryk*CV.pdf\n  X-Robots-Tag: noindex\n'
+            '/\n  Link: ' + self.link + '\n\n/assets/Patryk*CV.pdf\n'
+            '  X-Robots-Tag: noindex\n  Cache-Control: no-store\n'
         )
 
-        def responses(with_noindex):
+        def responses(with_noindex, cache_control='no-store'):
             def fetch(url):
                 if url.endswith('/__hosting-check-missing-7d9c2a__'):
                     return 404, {}, b''
@@ -76,12 +77,19 @@ class HostingTests(unittest.TestCase):
                     return 200, {}, b'{}'
                 if url.endswith('/Patryk%20Chojecki%20-%20CV.pdf'):
                     headers = {'X-Robots-Tag': 'noindex'} if with_noindex else {}
+                    headers.update({'Cache-Control': cache_control, 'CF-Cache-Status': 'HIT', 'Age': '120'})
                     return 200, headers, pdf.read_bytes()
                 return 200, {'Link': self.link, 'Cache-Control': 'public, max-age=0'}, (self.root / 'index.html').read_bytes()
             return fetch
 
         with patch.object(hosting.live, 'fetch', responses(False)):
-            with self.assertRaisesRegex(hosting.HostingCheckError, 'unexpected x-robots-tag header'):
+            with self.assertRaisesRegex(hosting.HostingCheckError, 'unexpected x-robots-tag header') as error:
+                hosting.check(self.root, 'https://preview.example')
+        self.assertIn("expected 'noindex', got None", str(error.exception))
+        self.assertIn("cf-cache-status='HIT'", str(error.exception))
+        self.assertIn("age='120'", str(error.exception))
+        with patch.object(hosting.live, 'fetch', responses(True, 'public, max-age=14400')):
+            with self.assertRaisesRegex(hosting.HostingCheckError, 'unexpected cache-control header'):
                 hosting.check(self.root, 'https://preview.example')
         with patch.object(hosting.live, 'fetch', responses(True)):
             hosting.check(self.root, 'https://preview.example')

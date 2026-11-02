@@ -82,8 +82,10 @@ def optimize(root):
         headers.extend([target, f"  Cache-Control: {IMMUTABLE}", ""])
     for route in hints:
         headers.extend([route, f"  Link: <{stylesheet}>; rel=preload; as=style", ""])
-    # The linked 2025 CV remains available at its old URL, but is no longer current.
-    headers.extend(["/assets/Patryk*CV.pdf", "  X-Robots-Tag: noindex", ""])
+    # Keep the historical CV accessible without retaining stale indexing headers
+    # in the custom domain's additional cache layer.
+    headers.extend(["/assets/Patryk*CV.pdf", "  X-Robots-Tag: noindex",
+                    "  Cache-Control: no-store", ""])
     headers.extend(["/.well-known/security.txt", "  Content-Type: text/plain; charset=utf-8", ""])
     if len(mapping) + len(hints) + 2 > 100:
         raise ValueError("The site exceeds the Pages header-rule limit")
