@@ -106,11 +106,12 @@ test("fetches and unwraps OpenXBL data while tolerating older-title failures", a
   });
 
   globalThis.fetch = async (url, options) => {
-    const path = new URL(url).pathname;
-    requests.push({ path, options });
+    const { origin, pathname: path } = new URL(url);
+    requests.push({ origin, path, options });
 
     const responses = {
-      "/api/v2/account": {
+      "/v2/account": {
+        code: 200,
         content: JSON.stringify({
           profileUsers: [
             {
@@ -123,7 +124,7 @@ test("fetches and unwraps OpenXBL data while tolerating older-title failures", a
           ],
         }),
       },
-      "/api/v2/player/titleHistory/12345": {
+      "/v2/titles/12345": {
         titles: [
           {
             titleId: "new",
@@ -137,7 +138,7 @@ test("fetches and unwraps OpenXBL data while tolerating older-title failures", a
           },
         ],
       },
-      "/api/v2/achievements/player/12345/new": {
+      "/v2/achievements/player/12345/new": {
         achievements: [
           {
             id: "unlocked",
@@ -173,15 +174,16 @@ test("fetches and unwraps OpenXBL data while tolerating older-title failures", a
   assert.deepEqual(
     requests.map(({ path }) => path),
     [
-      "/api/v2/account",
-      "/api/v2/player/titleHistory/12345",
-      "/api/v2/achievements/player/12345/new",
-      "/api/v2/achievements/player/12345/old",
+      "/v2/account",
+      "/v2/titles/12345",
+      "/v2/achievements/player/12345/new",
+      "/v2/achievements/player/12345/old",
     ]
   );
   assert.ok(
     requests.every(
-      ({ options }) => options.headers["X-Authorization"] === "secret-key"
+      ({ origin, options }) => origin === "https://api.xbl.io"
+        && options.headers["X-Authorization"] === "secret-key"
         && options.redirect === "error"
     )
   );
@@ -216,6 +218,18 @@ test("does not log network or redirect exception details", async (t) => {
   await assert.rejects(fetchOpenXblData("test-key"), {
     message: "OpenXBL /account request failed (network error, timeout, or redirect).",
   });
+});
+
+test("reports sanitized upstream failures from successful HTTP responses", async (t) => {
+  const fetch = t.mock.method(globalThis, "fetch", async () => ({
+    ok: true,
+    json: async () => ({ code: 403, content: { message: "private-account-data" } }),
+  }));
+
+  await assert.rejects(fetchOpenXblData("test-key"), {
+    message: "OpenXBL /account returned upstream status 403",
+  });
+  assert.equal(fetch.mock.callCount(), 1);
 });
 
 test("does not log response snippets from malformed JSON", async (t) => {

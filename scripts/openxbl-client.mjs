@@ -7,7 +7,7 @@ import {
   titlesFrom,
 } from "./openxbl-normalizer.mjs";
 
-const API_ROOT = "https://xbl.io/api/v2";
+const API_ROOT = "https://api.xbl.io/v2";
 
 async function request(path, apiKey) {
   const response = await fetch(`${API_ROOT}${path}`, {
@@ -29,10 +29,20 @@ async function request(path, apiKey) {
     throw new Error(`OpenXBL ${path} returned ${response.status}`);
   }
 
+  let payload;
+  let upstreamStatus;
+
   try {
-    let payload = await response.json();
+    payload = await response.json();
 
     for (let depth = 0; depth < 4; depth += 1) {
+      // The API envelope can report an upstream failure with HTTP 200.
+      const code = payload?.code;
+      if (Number.isInteger(code) && code >= 400 && code <= 599) {
+        upstreamStatus = code;
+        break;
+      }
+
       if (payload && typeof payload === "object" && "content" in payload) {
         payload = payload.content;
         continue;
@@ -55,12 +65,16 @@ async function request(path, apiKey) {
 
       break;
     }
-
-    return payload;
   } catch {
     // JSON parser errors can include snippets of the response body too.
     throw new Error(`OpenXBL ${path} returned invalid JSON`);
   }
+
+  if (upstreamStatus) {
+    throw new Error(`OpenXBL ${path} returned upstream status ${upstreamStatus}`);
+  }
+
+  return payload;
 }
 
 export async function fetchOpenXblData(apiKey) {
@@ -76,7 +90,7 @@ export async function fetchOpenXblData(apiKey) {
 
   const encodedXuid = encodeURIComponent(String(xuid));
   const titleHistory = await request(
-    `/player/titleHistory/${encodedXuid}`,
+    `/titles/${encodedXuid}`,
     apiKey
   );
   const recentTitles = titlesFrom(titleHistory)
