@@ -94,6 +94,10 @@ analytics:
 author:
   name             : "Patryk Chojecki"
   avatar           : "bio-photo-600.jpg"
+  avatar_avif:
+    - { file: "bio-photo-140.avif", width: 140 }
+    - { file: "bio-photo-280.avif", width: 280 }
+    - { file: "bio-photo-400.avif", width: 400 }
   bio              : "Program Manager at 886 Studios"
   job_title        : "Program Manager"
   location         : "Taipei, Taiwan"
