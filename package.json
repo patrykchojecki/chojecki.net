@@ -23,21 +23,19 @@
     "npm": ">=10.0.0"
   },
   "devDependencies": {
-    "npm-run-all2": "^9.0.4",
     "terser": "^5.51.2"
   },
   "scripts": {
-    "build": "run-s build:js build:site",
+    "build": "npm run build:js && npm run build:site",
+    "build:js": "terser assets/js/_main.js -c -m -o assets/js/main.min.js",
     "build:site": "JEKYLL_ENV=production bundle exec jekyll build && npm run check:site",
     "check:site": "python3 scripts/check-site.py",
     "check:live": "python3 scripts/check-live-site.py",
     "test:seo": "python3 -m unittest discover -s scripts -p 'test_*.py'",
-    "check": "run-s test test:seo build",
+    "check": "npm test && npm run test:seo && npm run build",
     "serve": "bundle exec jekyll serve --config _config.yml,_config.dev.yml --host 127.0.0.1 --port 4001",
     "serve:prod": "JEKYLL_ENV=production bundle exec jekyll serve --host 127.0.0.1 --port 4001",
     "test": "node --test scripts/*.test.mjs",
-    "uglify": "terser assets/js/_main.js -c -m -o assets/js/main.min.js",
-    "watch:js": "node scripts/watch-js.mjs",
-    "build:js": "npm run uglify"
+    "watch:js": "node scripts/watch-js.mjs"
   }
 }
