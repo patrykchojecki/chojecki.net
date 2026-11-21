@@ -48,6 +48,24 @@
         ],
         "createdAt": "2026-09-05T14:04:16.162Z",
         "reason": "Codex reviewed: preserved the existing figure-caption hover color while fixing page background and print readability."
+      },
+      {
+        "rule": "design-system-font",
+        "value": "chojecki icons solid",
+        "files": [
+          "_sass/_icons.scss"
+        ],
+        "createdAt": "2026-11-21T03:21:40.042Z",
+        "reason": "Codex reviewed: this font renders decorative icons only, through the existing Font Awesome classes."
+      },
+      {
+        "rule": "design-system-font",
+        "value": "chojecki icons brands",
+        "files": [
+          "_sass/_icons.scss"
+        ],
+        "createdAt": "2026-11-21T03:21:40.137Z",
+        "reason": "Codex reviewed: this font renders decorative brand icons only, through the existing Font Awesome classes."
       }
     ]
   }

@@ -1,0 +1,116 @@
+@use "sass:string";
+
+/*! Icons subsetted from Font Awesome Free 6.7.2 © 2024 Fonticons, Inc. (SIL OFL 1.1). */
+// Keep the glyphs used in templates and optional author-profile links.
+// Regenerate the fonts with scripts/subset-icon-fonts.py when these maps change.
+$site-solid-icons: (
+  briefcase: "\f0b1",
+  calendar: "\f073",
+  clock-o: "\f017",
+  envelope: "\f0e0",
+  folder-open: "\f07c",
+  graduation-cap: "\f19d",
+  key: "\f084",
+  link: "\f0c1",
+  map-marker: "\f3c5",
+  moon: "\f186",
+  rss: "\f09e",
+  spinner: "\f110",
+  sun: "\f185",
+  tags: "\f02c",
+);
+
+$site-brand-icons: (
+  bitbucket: "\f171",
+  bluesky: "\e671",
+  codepen: "\f1cb",
+  dribbble-square: "\f397",
+  facebook-square: "\f082",
+  flickr: "\f16e",
+  foursquare: "\f180",
+  github: "\f09b",
+  instagram: "\f16d",
+  lastfm-square: "\f203",
+  linkedin: "\f08c",
+  mastodon: "\f4f6",
+  pinterest: "\f0d2",
+  researchgate: "\f4f8",
+  soundcloud: "\f1be",
+  stack-overflow: "\f16c",
+  steam-square: "\f1b7",
+  tumblr-square: "\f174",
+  twitter-square: "\f081",
+  weibo: "\f18a",
+  wikipedia-w: "\f266",
+  xing-square: "\f169",
+  youtube: "\f167",
+);
+
+@font-face {
+  font-family: "Chojecki Icons Solid";
+  font-style: normal;
+  font-weight: 900;
+  font-display: block;
+  src: url("../webfonts/fa-solid-900.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Chojecki Icons Brands";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("../webfonts/fa-brands-400.woff2") format("woff2");
+}
+
+.fa,
+.fas,
+.fab {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  line-height: 1;
+
+  &::before {
+    content: var(--fa);
+  }
+}
+
+.fa,
+.fas {
+  font-family: "Chojecki Icons Solid";
+  font-weight: 900;
+}
+
+.fab {
+  font-family: "Chojecki Icons Brands";
+  font-weight: 400;
+}
+
+@each $icons in $site-solid-icons, $site-brand-icons {
+  @each $name, $glyph in $icons {
+    .fa-#{$name} {
+      --fa: #{string.unquote('"#{$glyph}"')};
+    }
+  }
+}
+
+.fa-fw {
+  text-align: center;
+  width: 1.25em;
+}
+
+.fa-3x {
+  font-size: 3em;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .fa-spin {
+    animation: fa-spin 2s linear infinite;
+  }
+}
+
+@keyframes fa-spin {
+  to { transform: rotate(360deg); }
+}

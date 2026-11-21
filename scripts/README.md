@@ -55,3 +55,7 @@ Authenticated API requests reject redirects. Errors omit response bodies and par
 `_config.yml` excludes source documentation, scripts, dependencies, demo pages, and local configuration from the site. `check-site.py` also rejects environment files, private keys, credential JSON files, and sensitive configuration directories at any depth in the generated output; failures report paths only.
 
 Keep private files outside published content. When adding a secret filename convention, update `_config.yml`, `.gitignore`, and the artifact patterns in `check-site.py` together. Keep analytics exports and observations in ignored `.geo/`; see [search visibility operations](geo/README.md).
+
+## Regenerate icon fonts
+
+The icon maps in `_sass/_icons.scss` cover the current templates and optional author links. If you add an icon, update the matching map and regenerate the WOFF2 files from the [Font Awesome Free 6.7.2 release](https://github.com/FortAwesome/Font-Awesome/releases/tag/6.7.2). Install `fonttools[woff]` in a Python virtual environment, then run `python scripts/subset-icon-fonts.py /path/to/extracted/webfonts`. Normal builds use the checked-in subsets.
