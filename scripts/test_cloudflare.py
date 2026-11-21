@@ -24,7 +24,7 @@ class CloudflareTests(unittest.TestCase):
         (self.root / "assets/webfonts").mkdir(parents=True)
         (self.root / "assets/webfonts/icons.woff2").write_bytes(b"font-one")
         (self.root / "assets/css/main.css").write_text('body{color:black}@font-face{src:url("../webfonts/icons.woff2")}')
-        for name in ("main.min.js", "theme-toggle.js", "site-delight.js"):
+        for name in ("main.min.js", "theme-toggle.js", "site-delight.js", "project-preview.js"):
             (self.root / "assets/js" / name).write_text('console.log("ok")')
         self.html = '<link rel="stylesheet" href="/assets/css/main.css?v=100"><script src="/assets/js/main.min.js?v=100" defer></script><a href="/cv/">CV</a>'
         (self.root / "index.html").write_text(self.html)
@@ -76,6 +76,20 @@ class CloudflareTests(unittest.TestCase):
         self.assertEqual(first["/assets/js/main.min.js"], second["/assets/js/main.min.js"])
         self.assertIn(second["/assets/webfonts/icons.woff2"], (self.root / second["/assets/css/main.css"].lstrip("/")).read_text())
         self.assertIn(second["/assets/css/main.css"], (self.root / "index.html").read_text())
+
+    def test_project_preview_uses_a_cacheable_content_hash(self):
+        project_page = self.root / "projects.html"
+        script = "/assets/js/project-preview.js"
+        project_page.write_text(f'<script src="{script}?v=100" defer></script>')
+        first = optimize(self.root)
+        self.assertIn(f'src="{first[script]}"', project_page.read_text())
+        self.assertEqual(header_rules(self.root)[first[script]]["cache-control"], IMMUTABLE)
+
+        (self.root / script.lstrip("/")).write_text('console.log("updated")')
+        second = optimize(self.root)
+        self.assertNotEqual(first[script], second[script])
+        self.assertIn(f'src="{second[script]}"', project_page.read_text())
+        self.assertEqual(first["/assets/css/main.css"], second["/assets/css/main.css"])
 
     def test_only_hashed_assets_get_long_caching_and_hint_matches_html(self):
         mapping = optimize(self.root)

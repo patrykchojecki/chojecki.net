@@ -8,6 +8,7 @@ import sys
 import time
 from concurrent.futures import ThreadPoolExecutor
 from fnmatch import fnmatchcase
+from http.client import HTTPException
 from pathlib import Path
 from urllib.parse import quote, urljoin, urlsplit
 
@@ -20,6 +21,13 @@ spec.loader.exec_module(live)
 
 class HostingCheckError(Exception):
     """A deployed response does not match the expected build."""
+
+
+def fetch(url):
+    try:
+        return live.fetch(url)
+    except (OSError, HTTPException) as error:
+        raise HostingCheckError(f"{url}: request failed: {error}") from error
 
 
 def check(root, base, check_hosts=False):
@@ -38,7 +46,7 @@ def check(root, base, check_hosts=False):
     def verify_file(path):
         relative = path.relative_to(root).as_posix()
         route = "/" + relative.removesuffix("index.html") if path.suffix == ".html" else "/" + relative
-        status, headers, body = live.fetch(base + quote(route, safe="/"))
+        status, headers, body = fetch(base + quote(route, safe="/"))
         if status != 200:
             return f"{route}: expected HTTP 200, got {status}"
         actual_headers = {key.lower(): value for key, value in headers.items()}
@@ -94,7 +102,7 @@ def check(root, base, check_hosts=False):
             ("http://chojecki.net/cv/?hosting-check=1", "https://chojecki.net/cv/?hosting-check=1", 301),
         ])
     for source, destination, expected_status in rules:
-        status, headers, _ = live.fetch(source)
+        status, headers, _ = fetch(source)
         if status != expected_status:
             errors.append(f"{source}: expected HTTP {expected_status}, got {status}")
         if destination:

@@ -24,7 +24,7 @@ def optimize(root):
     """Keep original URLs while making rendered resources safe to cache long-term."""
     root = Path(root).resolve()
     sources = [root / "assets/js" / name for name in
-               ("main.min.js", "theme-toggle.js", "site-delight.js")]
+               ("main.min.js", "theme-toggle.js", "site-delight.js", "project-preview.js")]
     sources += [p for p in sorted((root / "assets/webfonts").glob("*"))
                 if p.suffix in {".woff2", ".ttf"} and not FINGERPRINT.search(p.name)]
     css = root / "assets/css/main.css"

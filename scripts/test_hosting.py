@@ -5,6 +5,7 @@ import tempfile
 import unittest
 from pathlib import Path
 from unittest.mock import patch
+from urllib.error import URLError
 
 spec = importlib.util.spec_from_file_location("hosting", Path(__file__).with_name("check-hosting.py"))
 hosting = importlib.util.module_from_spec(spec)
@@ -52,6 +53,22 @@ class HostingTests(unittest.TestCase):
             hosting.check_with_retries(self.root, 'https://preview.example', attempts=3)
         self.assertEqual(self.requests, 1)
         sleep.assert_not_called()
+
+    def test_request_failure_uses_the_same_retry_policy(self):
+        responses = self.responses(0)
+        failures = iter([URLError('temporary DNS failure'), TimeoutError('read timed out')])
+
+        def fetch(url):
+            if url == 'https://preview.example/':
+                failure = next(failures, None)
+                if failure:
+                    raise failure
+            return responses(url)
+
+        with patch.object(hosting.live, 'fetch', fetch), patch.object(hosting.time, 'sleep') as sleep:
+            hosting.check_with_retries(self.root, 'https://preview.example', attempts=3, retry_delay=20)
+        self.assertEqual(self.requests, 1)
+        self.assertEqual(sleep.call_count, 2)
 
     def test_default_still_fails_on_first_mismatch(self):
         with patch.object(hosting.live, 'fetch', self.responses(1)), patch.object(hosting.time, 'sleep') as sleep:
