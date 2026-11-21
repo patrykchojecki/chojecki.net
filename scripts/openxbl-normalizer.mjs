@@ -236,7 +236,6 @@ export function normalizeOpenXblData(
 
   const result = {
     profile: {
-      xuid: String(firstValue(profile.id, profile.xuid) || ""),
       gamertag,
       gamerscore: Number.isFinite(gamerScore) ? gamerScore : null,
       gamerscoreLabel: Number.isFinite(gamerScore)
@@ -256,9 +255,6 @@ export function normalizeOpenXblData(
     },
     game: recentTitle
       ? {
-          id: String(
-            firstValue(recentTitle.title?.titleId, recentTitle.title?.id, "") || ""
-          ),
           name: String(
             firstValue(
               recentTitle.title?.name,
@@ -274,13 +270,6 @@ export function normalizeOpenXblData(
       : null,
     achievement: latestAchievement
       ? {
-          id: String(
-            firstValue(
-              latestAchievement.achievement?.id,
-              latestAchievement.achievement?.achievementId,
-              ""
-            ) || ""
-          ),
           name: String(
             firstValue(
               latestAchievement.achievement?.name,
@@ -298,8 +287,6 @@ export function normalizeOpenXblData(
           ).trim(),
           imageUrl: achievementImage(latestAchievement.achievement),
           gamerscore: achievementGamerscore(latestAchievement.achievement),
-          unlockedAt: latestAchievement.unlockedAt.toISOString(),
-          unlockedLabel: relativeLabel(latestAchievement.unlockedAt, now),
         }
       : null,
     updatedAt: now.toISOString(),

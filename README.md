@@ -84,7 +84,7 @@ See [scripts/README.md](scripts/README.md) for required deployment settings, Xbo
 - **Ruby or Bundler errors:** check `ruby --version`, `bundle --version`, and `which ruby`. On macOS, ensure your version manager selects the required Ruby instead of `/usr/bin/ruby`, then rerun the dependency installation above.
 - **Port 4001 is busy:** stop the existing server or run `bundle exec jekyll serve --config _config.yml,_config.dev.yml --host 127.0.0.1 --port 4002`.
 - **JavaScript changes do not appear:** run `npm run build:js`, or keep the watcher running while editing `_main.js`.
-- **Xbox activity is missing:** preview data is only used in development. Production omits the card when no live snapshot is available; see the [Xbox maintenance notes](scripts/README.md#xbox-activity).
+- **Xbox activity is out of date:** a failed refresh leaves the card on its last saved snapshot. Check the OpenXBL step in the deployment run and see the [Xbox maintenance notes](scripts/README.md#xbox-activity).
 
 ## Credits and license
 

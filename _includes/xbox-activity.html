@@ -1,6 +1,12 @@
 {% assign xbox = site.data.xbox %}
-{% if xbox == nil and jekyll.environment != "production" %}
-  {% assign xbox = site.data.xbox_preview %}
+{% assign xbox_saved = false %}
+{% if xbox == nil %}
+  {% if jekyll.environment == "production" %}
+    {% assign xbox = site.data.xbox_cached | default: site.data.xbox_fallback %}
+    {% assign xbox_saved = true %}
+  {% else %}
+    {% assign xbox = site.data.xbox_preview %}
+  {% endif %}
 {% endif %}
 
 {% if xbox and xbox.profile and xbox.game %}
@@ -35,7 +41,7 @@
             <span>{{ xbox.profile.gamerscoreLabel | escape }} G</span>
           </span>
         {% endif %}
-        {% if xbox.profile.activityLabel %}
+        {% if xbox.profile.activityLabel and xbox_saved == false %}
           <span class="xbox-activity__activity">
             <span class="xbox-activity__status-dot" aria-hidden="true"></span>
             <span>{{ xbox.profile.activityLabel | escape }}</span>
@@ -65,11 +71,11 @@
     <div class="xbox-activity__row-copy">
       <p class="xbox-activity__label">Last played</p>
       <p class="xbox-activity__name">{{ xbox.game.name | escape }}</p>
-      {% if xbox.game.lastPlayedLabel %}
+      {% if xbox.game.lastPlayedAt %}
         <time
           class="xbox-activity__meta"
           datetime="{{ xbox.game.lastPlayedAt | escape }}"
-        >{{ xbox.game.lastPlayedLabel | escape }}</time>
+        >{% if xbox_saved or xbox.game.lastPlayedLabel == nil %}{{ xbox.game.lastPlayedAt | date: "%-d %b %Y" }}{% else %}{{ xbox.game.lastPlayedLabel | escape }}{% endif %}</time>
       {% endif %}
     </div>
   </div>
@@ -107,10 +113,18 @@
     </div>
   {% endif %}
 
-  {% if xbox.updatedLabel or xbox.profile.profileUrl %}
+  {% assign xbox_sync = xbox.updatedLabel %}
+  {% if xbox_saved %}{% assign xbox_sync = xbox.updatedAt %}{% endif %}
+  {% if xbox_sync or xbox.profile.profileUrl %}
     <footer class="xbox-activity__footer">
-      {% if xbox.updatedLabel %}<span>{{ xbox.updatedLabel | escape }}</span>{% endif %}
-      {% if xbox.updatedLabel and xbox.profile.profileUrl %}<span aria-hidden="true">·</span>{% endif %}
+      {% if xbox_sync %}
+        {% if xbox_saved %}
+          <span>Last synced <time datetime="{{ xbox_sync | escape }}">{{ xbox_sync | date: "%-d %b %Y, %H:%M %Z" }}</time></span>
+        {% else %}
+          <span>{{ xbox_sync | escape }}</span>
+        {% endif %}
+        {% if xbox.profile.profileUrl %}<span aria-hidden="true">·</span>{% endif %}
+      {% endif %}
       {% if xbox.profile.profileUrl %}
         <a href="{{ xbox.profile.profileUrl | escape }}" rel="noopener noreferrer">Xbox profile <span aria-hidden="true">→</span></a>
       {% endif %}

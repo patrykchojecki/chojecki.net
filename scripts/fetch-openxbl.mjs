@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
-import { mkdir, writeFile } from "node:fs/promises";
-import { dirname, resolve } from "node:path";
+import { mkdir, mkdtemp, rename, rm, writeFile } from "node:fs/promises";
+import { dirname, join, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
 import { fetchOpenXblData } from "./openxbl-client.mjs";
@@ -27,8 +27,16 @@ async function main() {
   }
 
   const data = await fetchOpenXblData(apiKey);
-  await mkdir(dirname(OUTPUT_PATH), { recursive: true });
-  await writeFile(OUTPUT_PATH, `${JSON.stringify(data, null, 2)}\n`, "utf8");
+  const outputDirectory = dirname(OUTPUT_PATH);
+  await mkdir(outputDirectory, { recursive: true });
+  const temporaryDirectory = await mkdtemp(join(outputDirectory, ".xbox-"));
+  const temporaryPath = join(temporaryDirectory, "xbox.json");
+  try {
+    await writeFile(temporaryPath, `${JSON.stringify(data, null, 2)}\n`, "utf8");
+    await rename(temporaryPath, OUTPUT_PATH);
+  } finally {
+    await rm(temporaryDirectory, { recursive: true, force: true });
+  }
   process.stdout.write(
     `Wrote Xbox activity for ${data.profile.gamertag} to _data/xbox.json\n`
   );

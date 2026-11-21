@@ -54,6 +54,21 @@ class HostingTests(unittest.TestCase):
         self.assertEqual(self.requests, 1)
         sleep.assert_not_called()
 
+    def test_missing_xbox_card_blocks_hosting_verification(self):
+        now = self.root / 'now'
+        now.mkdir()
+        (now / 'index.html').write_text('<h1>Now</h1><main><h2 id="xbox-activity-title">What I’m Playing</h2></main>')
+        responses = self.responses(0)
+
+        def fetch(url):
+            if url == 'https://preview.example/now/':
+                return 200, {'Cache-Control': 'public, max-age=0'}, b'<h1>Now</h1><main></main>'
+            return responses(url)
+
+        with patch.object(hosting.live, 'fetch', fetch):
+            with self.assertRaisesRegex(hosting.HostingCheckError, '/now/: Xbox activity card is missing'):
+                hosting.check(self.root, 'https://preview.example')
+
     def test_request_failure_uses_the_same_retry_policy(self):
         responses = self.responses(0)
         failures = iter([URLError('temporary DNS failure'), TimeoutError('read timed out')])

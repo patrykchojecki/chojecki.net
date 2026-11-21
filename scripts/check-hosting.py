@@ -72,6 +72,8 @@ def check(root, base, check_hosts=False):
                 return f"{route}: HTML metadata differs from this build"
             if actual.headings != expected.headings or actual.main != expected.main or actual.redirect:
                 return f"{route}: page structure differs from this build"
+            if route == "/now/" and "xbox-activity-title" not in actual.ids:
+                return f"{route}: Xbox activity card is missing"
             if response_rules:
                 expected_assets = [ref for ref in expected.references if FINGERPRINT.search(urlsplit(ref).path)]
                 if any(ref not in actual.references for ref in expected_assets):

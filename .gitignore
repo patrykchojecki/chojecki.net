@@ -9,6 +9,7 @@ __pycache__/
 .DS_Store
 *.log
 _data/xbox.json
+_data/xbox_cached.json
 .geo/
 .wrangler/
 

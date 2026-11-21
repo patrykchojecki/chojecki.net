@@ -76,6 +76,8 @@ test("normalizes the latest Xbox activity for the compact now-page component", (
   assert.equal(result.achievement.name, "The Long Way Around");
   assert.equal(result.achievement.gamerscore, 15);
   assert.equal(result.profile.activityLabel, "2h ago");
+  assert.equal(Object.hasOwn(result.profile, "xuid"), false);
+  assert.equal(Object.hasOwn(result.achievement, "unlockedAt"), false);
 });
 
 test("rejects private title history instead of publishing an empty card", () => {

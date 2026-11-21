@@ -239,6 +239,8 @@ def check_site(directory):
         if not page.redirect:
             errors.extend(f"{relative}: {error}" for error in metadata_errors(page, f"https://chojecki.net{canonical_path}"))
         modification_dates(page, relative, errors)
+        if relative == "now/index.html" and "xbox-activity-title" not in page.ids:
+            errors.append(f"{relative}: Xbox activity card is missing")
         if relative.startswith("projects/") and not page.redirect:
             for schema_type in ("WebPage", "CreativeWork"):
                 nodes = [node for node in page.structured_data if isinstance(node, dict) and node.get("@type") == schema_type]
