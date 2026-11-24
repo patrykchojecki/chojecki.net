@@ -23,7 +23,7 @@
     "npm": ">=10.0.0"
   },
   "devDependencies": {
-    "terser": "^5.51.2"
+    "terser": "^5.51.4"
   },
   "scripts": {
     "build": "npm run build:js && npm run build:site",
